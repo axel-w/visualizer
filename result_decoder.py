@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import pandas as pd
 from pathlib import Path
 import pickle
-from run import Results
+from result_types import Results
 
 
 opmap = [
