@@ -3,7 +3,7 @@ from dataclasses import dataclass
 @dataclass
 class Results:
     group: str
-    benchmarks: list
+    benchmarks: list[str]
     ncores: int
     core_mask: list[int]
     cycles: list[int]
