@@ -128,7 +128,11 @@ def generate_workload_dropdown_options(groups: dict[ResultGroup]) -> list[dict[s
 
 def get_groups() -> dict[str, ResultGroup]:
     result_path = Path(__file__).parent.parent / 'tests' / 'generated'
-    results = find_results(result_path)
+    alternative_path = Path(__file__).parent / 'data'
+    results = list()
+    for p in [result_path, alternative_path]:
+        if p.exists():
+            results.extend(find_results(p))
     results = [format_result(result) for result in results]
     groups: dict[str, ResultGroup] = dict()
     for result in results:
