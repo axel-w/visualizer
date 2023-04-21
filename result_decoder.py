@@ -40,6 +40,7 @@ class ResultGroup:
 def find_results(result_path: Path):
     results = []
     for i in result_path.rglob('*.pickle'):
+        print(f'Loading {i}...')
         with open(i, 'rb') as f:
             result = pickle.load(f)
         results.append(result)
