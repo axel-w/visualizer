@@ -23,8 +23,13 @@ def generate_workload_dropdown_options(groups: dict[ResultGroup]) -> list[dict[s
 from pathlib import Path
 import pickle
 pickle_path = Path(__file__).parent / 'data' / '1.pickle'
-with open(pickle_path, 'rb') as f:
-    groups = pickle.load(f)
+data_path = Path(__file__).parent / 'data'
+# with open(pickle_path, 'rb') as f:
+#     groups = pickle.load(f)
+p = Path(data_path).glob('**/*')
+test_keys = [i.name for i in p]
+# for i in list(p):
+#     print(i.name)
 
 
 def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool = False, move_btn_init_disabled: bool = False):
@@ -38,6 +43,7 @@ def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool =
                     ),
                     html.Div([
                             dcc.Dropdown(
+                                options=test_keys,
                                 # options=wl_group_dropdown_options,
                                 id={'type': 'workload-group-dropdown', 'index': id},
                                 placeholder='Select a test group',
