@@ -1,8 +1,27 @@
 #!/usr/bin/env python
 
-from dash import Dash, html, Input, Output, State, Patch, ALL, ctx, no_update
+from dash import Dash, dcc, html, Input, Output, State, Patch, ALL, MATCH, ctx, no_update
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
+from result_decoder import get_groups, ResultGroup
+from run import Results
+
+def generate_workload_dropdown_options(groups: dict[ResultGroup]) -> list[dict[str, str]]:
+    options = []
+    # (bms: {len(group.results)})
+    for n, group in groups.items():
+        count_detailed = 'detailed' if group.log_mode else 'count'
+        run_debug = 'debug' if group.debug_mode else 'run'
+        option_label: str = f'{n}  -  (bms: {len(group.results)}, ncores: {group.ncores}, {count_detailed}, {run_debug})'
+        option = {'label': option_label, 'value': n}
+        options.append(option)
+    return options
+
+groups = get_groups()
+group_keys = *groups.keys(),
+wl_group_dropdown_options = generate_workload_dropdown_options(groups)
+
+
 
 def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool = False, move_btn_init_disabled: bool = False):
     return dbc.Card([
@@ -13,7 +32,15 @@ def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool =
                             dbc.Button("+", id={'type': 'add-left', 'index': id}),
                         ]
                     ),
-                    dbc.DropdownMenu(label=f'workload {id}'),
+                    html.Div([
+                            dcc.Dropdown(
+                                options=wl_group_dropdown_options,
+                                id={'type': 'workload-group-dropdown', 'index': id},
+                                placeholder='Select a test group',
+                                style={'font-weight': 'bold', "color":'black'}
+                            ),
+                        ], style={'display': 'inline-block', 'width': '50%'}
+                    ),
                     dbc.Button('✖', id={'type': 'remove-wl', 'index': id}, disabled=close_btn_init_disabled),
                     dbc.ButtonGroup(
                         [
@@ -24,7 +51,13 @@ def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool =
                 ], class_name='wl-card-header'
                 ),
             dbc.CardBody([
-                    dbc.DropdownMenu(),
+                    html.Div(
+                            dcc.Dropdown(
+                                id={'type': 'workload-dropdown', 'index': id},
+                                placeholder='Select a workload',
+                                style={'font-weight': 'bold', "color":'black'}
+                            ), style={'display': 'inline-block', 'width': '70%', 'max-width': 800}
+                    ),
                     dbc.Button()
             ]),
         ], style={'height': 200}, id={'type': 'wl-card', 'index': id}, class_name=class_name)
@@ -174,6 +207,19 @@ def control_move_buttons(outer_className):
         all_movers = [False] * len(ctx.outputs_list[0])
     return all_movers, all_movers
 
+@app.callback(
+    Output({'type': 'workload-dropdown', 'index': MATCH}, 'options'),
+    Input({'type': 'workload-group-dropdown', 'index': MATCH}, 'value'),
+    prevent_initial_call=True
+)
+def update_workload_dropdown(workload_group):
+    if workload_group is None:
+        options = []
+    else:
+        options =[{'label': k, 'value': k} for k in groups[workload_group].results.keys()]
+    return options
+
+
 
 if __name__ == "__main__":
-    app.server(debug=True)
+    app.run_server(debug=True)
