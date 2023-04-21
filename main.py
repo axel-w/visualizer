@@ -4,7 +4,7 @@ from dash import Dash, dcc, html, Input, Output, State, Patch, ALL, MATCH, ctx, 
 from dash.exceptions import PreventUpdate
 import dash_bootstrap_components as dbc
 from result_decoder import get_groups, ResultGroup
-from resulte_types import Results
+from result_types import Results
 
 def generate_workload_dropdown_options(groups: dict[ResultGroup]) -> list[dict[str, str]]:
     options = []
