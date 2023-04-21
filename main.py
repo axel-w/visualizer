@@ -17,17 +17,17 @@ def generate_workload_dropdown_options(groups: dict[ResultGroup]) -> list[dict[s
         options.append(option)
     return options
 
-# groups = get_groups()
-# group_keys = *groups.keys(),
-# wl_group_dropdown_options = generate_workload_dropdown_options(groups)
-from pathlib import Path
-import pickle
-pickle_path = Path(__file__).parent / 'data' / 'out.pickle'
-data_path = Path(__file__).parent / 'data'
-with open(pickle_path, 'rb') as f:
-    groups = pickle.load(f)
-p = Path(data_path).glob('**/*')
-test_keys = [i.name for i in p]
+groups = get_groups()
+group_keys = *groups.keys(),
+wl_group_dropdown_options = generate_workload_dropdown_options(groups)
+# from pathlib import Path
+# import pickle
+# pickle_path = Path(__file__).parent / 'data' / 'out.pickle'
+# data_path = Path(__file__).parent / 'data'
+# with open(pickle_path, 'rb') as f:
+#     groups = pickle.load(f)
+# p = Path(data_path).glob('**/*')
+# test_keys = [i.name for i in p]
 # for i in list(p):
 #     print(i.name)
 
@@ -43,8 +43,8 @@ def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool =
                     ),
                     html.Div([
                             dcc.Dropdown(
-                                options=test_keys,
-                                # options=wl_group_dropdown_options,
+                                # options=test_keys,
+                                options=wl_group_dropdown_options,
                                 id={'type': 'workload-group-dropdown', 'index': id},
                                 placeholder='Select a test group',
                                 style={'font-weight': 'bold', "color":'black'}
@@ -228,8 +228,6 @@ def update_workload_dropdown(workload_group):
     else:
         options =[{'label': k, 'value': k} for k in groups[workload_group].results.keys()]
     return options
-
-
 
 if __name__ == "__main__":
     app.run_server(debug=True)
