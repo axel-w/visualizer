@@ -22,10 +22,10 @@ def generate_workload_dropdown_options(groups: dict[ResultGroup]) -> list[dict[s
 # wl_group_dropdown_options = generate_workload_dropdown_options(groups)
 from pathlib import Path
 import pickle
-pickle_path = Path(__file__).parent / 'data' / '1.pickle'
+pickle_path = Path(__file__).parent / 'data' / 'out.pickle'
 data_path = Path(__file__).parent / 'data'
-# with open(pickle_path, 'rb') as f:
-#     groups = pickle.load(f)
+with open(pickle_path, 'rb') as f:
+    groups = pickle.load(f)
 p = Path(data_path).glob('**/*')
 test_keys = [i.name for i in p]
 # for i in list(p):
