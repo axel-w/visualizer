@@ -32,6 +32,7 @@ def workload_card(id: int, class_name: str = '', close_btn_init_disabled: bool =
 
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])#, suppress_callback_exceptions=True)
+server = app.server
 
 app.layout = html.Div([workload_card(0, 'single-wl-center', True, True)], className='single-wl', id='outer')
 
@@ -175,4 +176,4 @@ def control_move_buttons(outer_className):
 
 
 if __name__ == "__main__":
-    app.server(host='0.0.0.0', port=8080, debug=True)
+    app.server(debug=True)
