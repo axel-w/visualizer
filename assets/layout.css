@@ -1,0 +1,66 @@
+.mycontainer{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.single-wl{
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr;
+    grid-template-areas:
+    "center"
+    "denter";
+}
+
+.single-wl-center{
+    grid-area: 'center';
+}
+
+.single-wl-denter{
+    grid-area: 'denter';
+}
+
+.double-wl{
+    display: grid;
+    grid-template: 1fr 1fr / repeat(2, 1fr);
+    grid-template-areas: 
+    "left right"
+    "center n";
+}
+
+.triple-wl{
+    display: grid;
+    grid-template: 1fr 1fr / repeat(3, 1fr);
+    grid-template-areas: 
+    "left center right"
+    "n n n";
+}
+
+.removed-wl{
+    display: none;
+}
+
+.double-wl-left{
+    grid-area: left;
+}
+
+.double-wl-right{
+    grid-area: right;
+}
+
+.triple-wl-right{
+    grid-area: right;
+}
+
+.triple-wl-left{
+    grid-area: left;
+}
+
+.triple-wl-center{
+    grid-area: center;
+}
+
+.wl-card-header{
+    display: flex;
+    justify-content: space-between;
+}
