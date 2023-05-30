@@ -1,0 +1,80 @@
+warning: multi-threaded target stopped without sending a thread-id, using first non-exited thread
+0x0000000000010024 in ?? ()
+Loading section .text, size 0x23f2 lma 0x80000000
+Loading section .rodata, size 0x191 lma 0x800023f8
+Loading section .eh_frame, size 0x28 lma 0x80002590
+Loading section .htif, size 0x10 lma 0x800025c0
+Loading section .data.impure_data, size 0xb0 lma 0x800025d0
+Loading section .sdata, size 0x48 lma 0x80002680
+Start address 0x0000000080000000, load size 9907
+Transfer rate: 25 bytes/sec, 1651 bytes/write.
+Breakpoint 1 at 0x80000380: file /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/bitonic-fac/main.c, line 66.
+[Switching to Thread 2]
+
+Thread 2 "riscv.cpu1" hit Breakpoint 1, __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/bitonic-fac/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 1 (Thread 1)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/bitonic-fac/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 2 (Thread 2)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/bitonic-fac/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 1 (Thread 1)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/bitonic-fac/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 2 (Thread 2)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/bitonic-fac/main.c:66
+66	  if (mhartid == 0) {
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+[Inferior 1 (Remote target) detached]
+shutdown command invoked
+ê

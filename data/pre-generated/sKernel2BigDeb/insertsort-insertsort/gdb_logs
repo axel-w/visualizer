@@ -1,0 +1,80 @@
+warning: multi-threaded target stopped without sending a thread-id, using first non-exited thread
+0x0000000000010024 in ?? ()
+Loading section .text, size 0x255e lma 0x80000000
+Loading section .rodata, size 0x1f1 lma 0x80002560
+Loading section .eh_frame, size 0x28 lma 0x80002758
+Loading section .htif, size 0x10 lma 0x80002780
+Loading section .data.impure_data, size 0xb0 lma 0x80002790
+Loading section .sdata, size 0x30 lma 0x80002840
+Start address 0x0000000080000000, load size 10343
+Transfer rate: 24 bytes/sec, 1723 bytes/write.
+Breakpoint 1 at 0x80000380: file /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/insertsort-insertsort/main.c, line 66.
+keep_alive() was not invoked in the 1000 ms timelimit. GDB alive packet not sent! (1129 ms). Workaround: increase "set remotetimeout" in GDB
+
+Thread 1 "riscv.cpu0" hit Breakpoint 1, __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/insertsort-insertsort/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 1 (Thread 1)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/insertsort-insertsort/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 2 (Thread 2)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/insertsort-insertsort/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 1 (Thread 1)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/insertsort-insertsort/main.c:66
+66	  if (mhartid == 0) {
+[Switching to thread 2 (Thread 2)]
+#0  __main () at /ssd/wiedemax/chipyard/generators/monitoring/tests/generated/sKernel2BigDeb/insertsort-insertsort/main.c:66
+66	  if (mhartid == 0) {
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+x/8dw 0x2010
+[Inferior 1 (Remote target) detached]
+shutdown command invoked
+ê
