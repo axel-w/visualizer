@@ -1,66 +1,91 @@
-.mycontainer{
+/* Layout classes for the visualizer app
+Each number of wl-groups (1-3) has its own layout class which is applied to the
+out html Div. These classes specify grid templates with 1-3 columns and 9 rows.
+
+For each outer html Div layout class, there are also layout classes for the
+children cards. These set the grid position the card inhabits. Grid-row will
+then later be superceded by the card's adjusted row-span.
+
+Comparison layout classes set the grid column span of the comparison card.
+
+All classes are exchanged dynamically by the callbacks of the app.
+*/
+
+
+/* Single wl-group layout: */
+.single-wl {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template: repeat(9, min-content) / minmax(0, 1fr);
+    grid-auto-flow: dense;
+    gap: 10px;
 }
 
-.single-wl{
+.single-wl-center {
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+}
+
+/* Double wl-group layout: */
+.double-wl {
     display: grid;
-    grid-template: 1fr 1fr/ 1fr;
-    grid-template-areas:
-    "center"
-    "denter";
+    grid-template: repeat(9, min-content) / repeat(2, minmax(0, 1fr));
+    grid-auto-flow: dense;
+    gap: 10px;
 }
 
-.single-wl-center{
-    grid-area: 'center';
+.double-wl-left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
 }
 
-.single-wl-denter{
-    grid-area: 'denter';
+.double-wl-right {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
 }
 
-.double-wl{
+
+/* Triple wl-group layout: */
+.triple-wl {
     display: grid;
-    grid-template: 1fr 1fr / repeat(2, 1fr);
-    grid-template-areas: 
-    "left right"
-    "center n";
+    grid-template: repeat(9, min-content) / repeat(3, minmax(0, 1fr));
+    grid-auto-flow: dense;
+    gap: 10px;
 }
 
-.triple-wl{
-    display: grid;
-    grid-template: 1fr 1fr / repeat(3, 1fr);
-    grid-template-areas: 
-    "left center right"
-    "n n n";
+.triple-wl-right {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
 }
 
-.removed-wl{
+.triple-wl-left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.triple-wl-center {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+/* Other wl-group layout classes: */
+.wl-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.removed-wl {
     display: none;
 }
 
-.double-wl-left{
-    grid-area: left;
+/* Comparison layout classes: */
+.bigcomparison {
+    grid-column: span 3;
 }
 
-.double-wl-right{
-    grid-area: right;
+.mediumcomparison {
+    grid-column: span 2;
 }
 
-.triple-wl-right{
-    grid-area: right;
-}
-
-.triple-wl-left{
-    grid-area: left;
-}
-
-.triple-wl-center{
-    grid-area: center;
-}
-
-.wl-card-header{
+.smallcomparison {
     display: flex;
-    justify-content: space-between;
 }

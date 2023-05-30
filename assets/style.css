@@ -1,0 +1,12 @@
+/* Dash seemms to have issues when adjusting the maximum height of the dynamic
+component of dropdown menus. This css file contains a workaround to allow
+deeper dropdown. */
+
+.Select-menu,
+.Select-menu-outer {
+    max-height: 700px !important;
+}
+
+/* .VirtualSelectGrid {
+    max-height: 700px !important;
+} */

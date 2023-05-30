@@ -1,0 +1,27 @@
+/* Dash does not apply the theme template correctly to dropdown components.
+This css file contains a workaround to force correct styling for dropdowns.
+Adapted from: https://stackoverflow.com/questions/73660842/dash-how-change-color-of-dropdown-menu-backround-and-text
+*/
+
+.Select-control {
+    background-color: rgb(25, 25, 25) !important;
+    color: white !important;
+}
+
+.Select-menu-outer {
+    background-color: rgb(25, 25, 25) !important;
+    color: white !important;
+}
+
+.Select-value-label {
+    color: white !important;
+}
+
+/*Dash does not set the text color of the filter cells in a data table
+correctly. This css forces white.
+Taken from:
+https://community.plotly.com/t/change-color-of-filter-data-in-dash-table/42411/2
+*/
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner input:not([type=radio]):not([type=checkbox]) {
+    color: white !important;
+}
